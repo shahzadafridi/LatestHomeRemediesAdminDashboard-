@@ -38,6 +38,8 @@ class ApiController extends MY_Controller
         }
     }
 
+    // getting categories using rest api and return response in JSON formate.
+
     function get_categories()
     {
         $this->db->select('*');
