@@ -8,7 +8,7 @@ class Admin extends MY_Controller
 
     }
 
-    //Checking cpanel git version.
+    //Last time checking Git version of cpanel.
 
     public function index()
 	{
