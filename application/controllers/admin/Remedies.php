@@ -33,7 +33,7 @@ class Remedies extends MY_Controller
         $xcrud->before_insert ('insert_before');
         $xcrud->before_update ('insert_before');
         $xcrud->column_callback('id', 'photoGallery');
-        $xcrud->change_type('image', 'image', '', array('width' => 300, 'path' => '../../assets/uploads/Remedies/thumbnail'));
+        $xcrud->change_type('image', 'image', '', array('width' => 300, 'path' => '../../assets/uploads/remedies/thumbnail'));
         $xcrud->column_class('image', 'zoom_img');
         $xcrud->label(array('id' => 'Gallery'));
         $menu = $this->loadMenu("remedies");
@@ -51,10 +51,11 @@ class Remedies extends MY_Controller
 
 	public function gallery($remedies_id)
     {
+        $data['session'] =  $this->session->userdata['admin'];
         $gallery = $this->doctrine->em->getRepository("Entity\Gallery")->findBy(array('module_id' => $remedies_id));
 
         $menu = $this->loadMenu("gallery");
-        $this->twig->display('admin/gallery', compact('gallery', 'menu', 'remedies_id'));
+        $this->twig->display('admin/gallery', compact('gallery', 'data','menu', 'remedies_id'));
     }
 
     public function gallery_upload($remedies_id)
@@ -86,7 +87,7 @@ class Remedies extends MY_Controller
                 $this->em->flush();
 
                 // Save image into directory
-                file_put_contents("./assets/uploads/Remedies/gallery/{$name}", base64_decode($binaryImage));
+                file_put_contents("./assets/uploads/remedies/gallery/{$name}", base64_decode($binaryImage));
 
                 $status = "success";
                 $message = "successfully uploaded";

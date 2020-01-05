@@ -18,148 +18,320 @@ class ApiController extends MY_Controller
 
     function get_sliders()
     {
-        $this->db->select('*');
-        $q = $this->db->get('sliders');
-        $rows = $q->num_rows();
-        if ($rows > 0) {
-            $this->output
-                ->set_content_type('application/json')
-                ->set_status_header(200) // Return status
-                ->set_output(json_encode(array(
-                    'status' => '200',
-                    'data' => $q->result())));
+        $header = $this->input->request_headers();
+        $api_token = base64_decode($header['api_token']);
+        if ($api_token == "encryptsoul@homeremedies") {
+            $this->db->select('*');
+            $q = $this->db->get('sliders');
+            $rows = $q->num_rows();
+            if ($rows > 0) {
+                $this->output
+                    ->set_content_type('application/json')
+                    ->set_status_header(200) // Return status
+                    ->set_output(json_encode(array(
+                        'status' => '200',
+                        'data' => $q->result())));
+            } else {
+                $this->output
+                    ->set_content_type('application/json')
+                    ->set_status_header(200) // Return status
+                    ->set_output(json_encode(array(
+                        'status' => '404',
+                        'data' => array())));
+            }
         } else {
             $this->output
                 ->set_content_type('application/json')
                 ->set_status_header(200) // Return status
                 ->set_output(json_encode(array(
                     'status' => '404',
-                    'data' => array())));
+                    'data' => array('message' => "unauthorized access."))));
         }
+
     }
 
     // getting categories using rest api and return response in JSON formate.
 
     function get_categories()
     {
-        $this->db->select('*');
-        $q = $this->db->get('categories');
-        $rows = $q->num_rows();
-        if ($rows > 0) {
-            $this->output
-                ->set_content_type('application/json')
-                ->set_status_header(200) // Return status
-                ->set_output(json_encode(array(
-                    'status' => '200',
-                    'data' => $q->result())));
+        $header = $this->input->request_headers();
+        $api_token = base64_decode($header['api_token']);
+        if ($api_token == "encryptsoul@homeremedies") {
+            $this->db->select('*');
+            $q = $this->db->get('categories');
+            $rows = $q->num_rows();
+            if ($rows > 0) {
+                $this->output
+                    ->set_content_type('application/json')
+                    ->set_status_header(200) // Return status
+                    ->set_output(json_encode(array(
+                        'status' => '200',
+                        'data' => $q->result())));
+            } else {
+                $this->output
+                    ->set_content_type('application/json')
+                    ->set_status_header(200) // Return status
+                    ->set_output(json_encode(array(
+                        'status' => '404',
+                        'data' => array())));
+            }
         } else {
             $this->output
                 ->set_content_type('application/json')
                 ->set_status_header(200) // Return status
                 ->set_output(json_encode(array(
                     'status' => '404',
-                    'data' => array())));
+                    'data' => array('message' => "unauthorized access."))));
         }
     }
 
     function get_sub_categories()
     {
-        $start = 0;
-        $limit = 5;
-        $this->db->select('*');
-        $this->db->limit($limit, $start);
-        $q = $this->db->get('sub_categories');
-        $rows = $q->num_rows();
-        if ($rows > 0) {
-            $this->output
-                ->set_content_type('application/json')
-                ->set_status_header(200) // Return status
-                ->set_output(json_encode(array(
-                    'status' => '200',
-                    'data' => $q->result())));
+        $header = $this->input->request_headers();
+        $api_token = base64_decode($header['api_token']);
+        if ($api_token == "encryptsoul@homeremedies") {
+            $start = 0;
+            $limit = 5;
+            $this->db->select('*');
+            $this->db->limit($limit, $start);
+            $q = $this->db->get('sub_categories');
+            $rows = $q->num_rows();
+            if ($rows > 0) {
+                $this->output
+                    ->set_content_type('application/json')
+                    ->set_status_header(200) // Return status
+                    ->set_output(json_encode(array(
+                        'status' => '200',
+                        'data' => $q->result())));
+            } else {
+                $this->output
+                    ->set_content_type('application/json')
+                    ->set_status_header(200) // Return status
+                    ->set_output(json_encode(array(
+                        'status' => '404',
+                        'data' => array())));
+            }
         } else {
             $this->output
                 ->set_content_type('application/json')
                 ->set_status_header(200) // Return status
                 ->set_output(json_encode(array(
                     'status' => '404',
-                    'data' => array())));
+                    'data' => array('message' => "unauthorized access."))));
         }
     }
 
     function get_remedies()
     {
-        $this->db->select('*');
-        $q = $this->db->get('remedies');
-        $rows = $q->num_rows();
-        if ($rows > 0) {
-            $this->output
-                ->set_content_type('application/json')
-                ->set_status_header(200) // Return status
-                ->set_output(json_encode(array(
-                    'status' => '200',
-                    'data' => $q->result())));
+        $header = $this->input->request_headers();
+        $api_token = base64_decode($header['api_token']);
+        if ($api_token == "encryptsoul@homeremedies") {
+            $this->db->select('*');
+            $q = $this->db->get('remedies');
+            $rows = $q->num_rows();
+            if ($rows > 0) {
+                $this->output
+                    ->set_content_type('application/json')
+                    ->set_status_header(200) // Return status
+                    ->set_output(json_encode(array(
+                        'status' => '200',
+                        'data' => $q->result())));
+            } else {
+                $this->output
+                    ->set_content_type('application/json')
+                    ->set_status_header(200) // Return status
+                    ->set_output(json_encode(array(
+                        'status' => '404',
+                        'data' => array())));
+            }
         } else {
             $this->output
                 ->set_content_type('application/json')
                 ->set_status_header(200) // Return status
                 ->set_output(json_encode(array(
                     'status' => '404',
-                    'data' => array())));
+                    'data' => array('message' => "unauthorized access."))));
         }
     }
 
     function get_blogs()
     {
-        $this->db->select('*');
-        $q = $this->db->get('blogs');
-        $rows = $q->num_rows();
-        if ($rows > 0) {
-            $this->output
-                ->set_content_type('application/json')
-                ->set_status_header(200) // Return status
-                ->set_output(json_encode(array(
-                    'status' => '200',
-                    'data' => $q->result())));
+        $header = $this->input->request_headers();
+        $api_token = base64_decode($header['api_token']);
+        if ($api_token == "encryptsoul@homeremedies") {
+
+            $this->db->select('*');
+            $q = $this->db->get('blogs');
+            $rows = $q->num_rows();
+            if ($rows > 0) {
+                $this->output
+                    ->set_content_type('application/json')
+                    ->set_status_header(200) // Return status
+                    ->set_output(json_encode(array(
+                        'status' => '200',
+                        'data' => $q->result())));
+            } else {
+                $this->output
+                    ->set_content_type('application/json')
+                    ->set_status_header(200) // Return status
+                    ->set_output(json_encode(array(
+                        'status' => '404',
+                        'data' => array())));
+            }
         } else {
             $this->output
                 ->set_content_type('application/json')
                 ->set_status_header(200) // Return status
                 ->set_output(json_encode(array(
                     'status' => '404',
-                    'data' => array())));
+                    'data' => array('message' => "unauthorized access."))));
         }
     }
 
-    function get_healt_tips()
+    function get_health_tips()
     {
-        $this->db->select('*');
-        $q = $this->db->get('health_tips');
-        $rows = $q->num_rows();
-        if ($rows > 0) {
-            $this->output
-                ->set_content_type('application/json')
-                ->set_status_header(200) // Return status
-                ->set_output(json_encode(array(
-                    'status' => '200',
-                    'data' => $q->result())));
+        $header = $this->input->request_headers();
+        $api_token = base64_decode($header['api_token']);
+        if ($api_token == "encryptsoul@homeremedies") {
+
+            $this->db->select('*');
+            $q = $this->db->get('health_tips');
+            $rows = $q->num_rows();
+            if ($rows > 0) {
+                $this->output
+                    ->set_content_type('application/json')
+                    ->set_status_header(200) // Return status
+                    ->set_output(json_encode(array(
+                        'status' => '200',
+                        'data' => $q->result())));
+            } else {
+                $this->output
+                    ->set_content_type('application/json')
+                    ->set_status_header(200) // Return status
+                    ->set_output(json_encode(array(
+                        'status' => '404',
+                        'data' => array())));
+            }
         } else {
             $this->output
                 ->set_content_type('application/json')
                 ->set_status_header(200) // Return status
                 ->set_output(json_encode(array(
                     'status' => '404',
-                    'data' => array())));
+                    'data' => array('message' => "unauthorized access."))));
         }
     }
+
+    function get_videos()
+    {
+        $header = $this->input->request_headers();
+        $api_token = base64_decode($header['api_token']);
+        if ($api_token == "encryptsoul@homeremedies") {
+
+            $this->db->select('*');
+            $q = $this->db->get('videos');
+            $rows = $q->num_rows();
+            if ($rows > 0) {
+                $this->output
+                    ->set_content_type('application/json')
+                    ->set_status_header(200) // Return status
+                    ->set_output(json_encode(array(
+                        'status' => '200',
+                        'data' => $q->result())));
+            } else {
+                $this->output
+                    ->set_content_type('application/json')
+                    ->set_status_header(200) // Return status
+                    ->set_output(json_encode(array(
+                        'status' => '404',
+                        'data' => array())));
+            }
+        } else {
+            $this->output
+                ->set_content_type('application/json')
+                ->set_status_header(200) // Return status
+                ->set_output(json_encode(array(
+                    'status' => '404',
+                    'data' => array('message' => "unauthorized access."))));
+        }
+    }
+
+    function get_pages()
+    {
+        $header = $this->input->request_headers();
+        $api_token = base64_decode($header['api_token']);
+        if ($api_token == "encryptsoul@homeremedies") {
+
+            $this->db->select('*');
+            $q = $this->db->get('pages');
+            $rows = $q->num_rows();
+            if ($rows > 0) {
+                $this->output
+                    ->set_content_type('application/json')
+                    ->set_status_header(200) // Return status
+                    ->set_output(json_encode(array(
+                        'status' => '200',
+                        'data' => $q->result())));
+            } else {
+                $this->output
+                    ->set_content_type('application/json')
+                    ->set_status_header(200) // Return status
+                    ->set_output(json_encode(array(
+                        'status' => '404',
+                        'data' => array())));
+            }
+        } else {
+            $this->output
+                ->set_content_type('application/json')
+                ->set_status_header(200) // Return status
+                ->set_output(json_encode(array(
+                    'status' => '404',
+                    'data' => array('message' => "unauthorized access."))));
+        }
+    }
+
+    function get_settings()
+    {
+        $header = $this->input->request_headers();
+        $api_token = base64_decode($header['api_token']);
+        if ($api_token == "encryptsoul@homeremedies") {
+
+            $this->db->select('*');
+            $q = $this->db->get('settings');
+            $rows = $q->num_rows();
+            if ($rows > 0) {
+                $this->output
+                    ->set_content_type('application/json')
+                    ->set_status_header(200) // Return status
+                    ->set_output(json_encode(array(
+                        'status' => '200',
+                        'data' => $q->result())));
+            } else {
+                $this->output
+                    ->set_content_type('application/json')
+                    ->set_status_header(200) // Return status
+                    ->set_output(json_encode(array(
+                        'status' => '404',
+                        'data' => array())));
+            }
+        } else {
+            $this->output
+                ->set_content_type('application/json')
+                ->set_status_header(200) // Return status
+                ->set_output(json_encode(array(
+                    'status' => '404',
+                    'data' => array('message' => "unauthorized access."))));
+        }
+    }
+
 
     //search
 
     function search_instruction_by_category_id()
     {
         if ($this->input->post('id') != null) {
-            $this->db->where('instruction.category_id', $this->input->post('id'));
-            $q = $this->db->get('instruction');
+            $this->db->where('remedies.category_id', $this->input->post('id'));
+            $q = $this->db->get('remedies');
             $rows = $q->num_rows();
             if ($rows > 0) {
                 $this->output
@@ -189,8 +361,8 @@ class ApiController extends MY_Controller
     function search_instruction_by_id()
     {
         if ($this->input->post('id') != null) {
-            $this->db->where('instruction.id', $this->input->post('id'));
-            $q = $this->db->get('instruction');
+            $this->db->where('remedies.id', $this->input->post('id'));
+            $q = $this->db->get('remedies');
             $rows = $q->num_rows();
             if ($rows > 0) {
                 $this->output
@@ -213,17 +385,17 @@ class ApiController extends MY_Controller
                 ->set_status_header(400) // Return status
                 ->set_output(json_encode(array(
                     'status' => '400',
-                    'message' => 'Instruction id required')));
+                    'message' => 'Remedies id required')));
         }
     }
 
     function search_instruction_by_text($search_text)
     {
-        $this->db->table('instruction');
+        $this->db->table('remedies');
         $this->db->select('*');
-        $this->db->like('instruction.name', $search_text, 'both');
-        $this->db->order_by('instruction.id', 'desc');
-        $q = $this->db->get('instruction');
+        $this->db->like('remedies.name', $search_text, 'both');
+        $this->db->order_by('remedies.id', 'desc');
+        $q = $this->db->get('remedies');
         $this->output
             ->set_content_type('application/json')
             ->set_status_header(200) // Return status

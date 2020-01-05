@@ -14,7 +14,7 @@
             <div class="collapse" id="UploadPhotos">
                 <div class="well well-sm">
                     <div class="modal-body">
-                        <div action='{{ base_url("admin/Remedies/gallery_upload/#{remedies_id}") }}' id="dropzone" class="dropzone"> </div>
+                        <div action='{{ base_url("admin/remedies/gallery_upload/#{remedies_id}") }}' id="dropzone" class="dropzone"> </div>
                     </div>
                 </div>
             </div>
@@ -43,8 +43,8 @@
                 {% for imageObj in gallery %}
                 <tr  id="tr_{{ imageObj.id }}">
                     <td>
-                        <a href='{{ asset("uploads/Remedies/gallery/#{imageObj.image}") }}'>
-                            <img src='{{ asset("uploads/Remedies/gallery/#{imageObj.image}") }}' href='{{ asset("uploads/Remedies/gallery/#{imageObj.image}") }}' class="img-responsive colorbox">
+                        <a href='{{ asset("uploads/remedies/gallery/#{imageObj.image}") }}'>
+                            <img src='{{ asset("uploads/remedies/gallery/#{imageObj.image}") }}' href='{{ asset("uploads/remedies/gallery/#{imageObj.image}") }}' class="img-responsive colorbox">
                         </a>
                     </td>
                     <td style="padding:35px">
@@ -105,7 +105,7 @@
             if (confirm('Are you sure you want to delete?')) {
                 var image_ids = [];
                 image_ids.push(parseInt($(this).data('id')));
-                $.post('{{ base_url("admin/Remedies/gallery_delete") }}', {
+                $.post('{{ base_url("admin/remedies/gallery_delete") }}', {
                     image_ids: image_ids,
                     module_type : "Remedies",
                     module_id: {{ remedies_id }}
@@ -122,7 +122,7 @@
                 $("[name^=image_ids]:checked").each(function () {
                     image_ids.push(parseInt($(this).val()));
                 });
-                $.post('{{ base_url("admin/Remedies/gallery_delete") }}', {
+                $.post('{{ base_url("admin/remedies/gallery_delete") }}', {
                     image_ids: image_ids,
                     module_type : "Remedies",
                     module_id: {{ remedies_id }}
@@ -137,7 +137,7 @@
     function updateSortOrder(elem) {
         var orderValue = parseInt($(elem).val());
         var id = parseInt($(elem).data('id'));
-        $.post('{{ base_url("admin/Remedies/gallery_sort_order") }}', {
+        $.post('{{ base_url("admin/remedies/gallery_sort_order") }}', {
             image_id: id,
             sort_order: orderValue,
             module_type : "Remedies",
@@ -151,7 +151,7 @@
     function updateFlagActive(elem) {
         var flagStatus = ($(elem).is(':checked')) ? 1 : 0;
         var id = parseInt($(elem).data('id'));
-        $.post('{{ base_url("admin/Remedies/gallery_flag_active") }}', {
+        $.post('{{ base_url("admin/remedies/gallery_flag_active") }}', {
             image_id: id,
             flag_status: flagStatus,
             module_type : "Remedies",
@@ -164,7 +164,7 @@
 
     function updateFlagThumbnail(elem) {
         var image_id = parseInt($(elem).data('id'));
-        $.post('{{ base_url("admin/Remedies/gallery_flag_thumbnail") }}', {
+        $.post('{{ base_url("admin/remedies/gallery_flag_thumbnail") }}', {
             image_id: image_id,
             module_type : "Remedies",
             module_id: {{ remedies_id }}

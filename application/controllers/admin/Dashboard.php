@@ -36,7 +36,7 @@ class Dashboard extends MY_Controller
         $xcrud->columns(array('image','category_id','title','tag'));
         $xcrud->before_insert ('insert_before');
         $xcrud->before_update ('insert_before');
-        $xcrud->change_type('image', 'image', '', array('width' => 300, 'path' => '../../assets/uploads/Remedies/thumbnail'));
+        $xcrud->change_type('image', 'image', '', array('width' => 300, 'path' => '../../assets/uploads/remedies/thumbnail'));
         $this->twig->display('admin/dashboard', compact('menu','data','xcrud'));
     }
 
